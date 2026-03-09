@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 220 30% 8%;
+    --foreground: 45 100% 96%;
+
+    --card: 220 25% 12%;
+    --card-foreground: 45 100% 96%;
+
+    --popover: 220 25% 12%;
+    --popover-foreground: 45 100% 96%;
+
+    --primary: 45 100% 50%;
+    --primary-foreground: 220 30% 8%;
+
+    --secondary: 200 80% 45%;
+    --secondary-foreground: 45 100% 96%;
+
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 15% 60%;
+
+    --accent: 0 85% 55%;
+    --accent-foreground: 45 100% 96%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 45 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom One Piece theme colors */
+    --ocean-deep: 210 80% 20%;
+    --ocean-light: 195 70% 40%;
+    --treasure-gold: 45 100% 50%;
+    --treasure-shine: 50 100% 70%;
+    --pirate-red: 0 85% 55%;
+    --pirate-dark: 220 30% 8%;
+    --parchment: 45 30% 90%;
+    --straw-hat: 35 60% 55%;
+
+    /* Gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(210 80% 20%) 0%, hsl(195 70% 40%) 50%, hsl(200 80% 45%) 100%);
+    --gradient-treasure: linear-gradient(135deg, hsl(45 100% 40%) 0%, hsl(45 100% 55%) 50%, hsl(50 100% 70%) 100%);
+    --gradient-adventure: linear-gradient(180deg, hsl(220 30% 8%) 0%, hsl(210 80% 20%) 50%, hsl(195 70% 35%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220 25% 14%) 0%, hsl(220 25% 10%) 100%);
+
+    /* Shadows */
+    --shadow-glow: 0 0 30px hsl(45 100% 50% / 0.3);
+    --shadow-card: 0 10px 40px hsl(0 0% 0% / 0.4);
+    --shadow-button: 0 4px 20px hsl(45 100% 50% / 0.4);
+
+    --sidebar-background: 220 25% 10%;
+    --sidebar-foreground: 45 100% 96%;
+    --sidebar-primary: 45 100% 50%;
+    --sidebar-primary-foreground: 220 30% 8%;
+    --sidebar-accent: 220 25% 18%;
+    --sidebar-accent-foreground: 45 100% 96%;
+    --sidebar-border: 220 20% 20%;
+    --sidebar-ring: 45 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .btn-treasure {
+    @apply bg-gradient-to-r from-[hsl(45_100%_40%)] via-[hsl(45_100%_55%)] to-[hsl(50_100%_70%)] text-pirate-dark font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_4px_30px_hsl(45_100%_50%/0.5)];
+  }
+
+  .btn-ocean {
+    @apply bg-gradient-to-r from-ocean-deep via-ocean-light to-secondary text-foreground font-semibold px-8 py-4 rounded-lg border-2 border-treasure-gold/30 transition-all duration-300 hover:border-treasure-gold hover:scale-105;
+  }
+
+  .card-pirate {
+    @apply bg-gradient-to-br from-card to-muted border border-border rounded-xl p-6 shadow-[0_10px_40px_hsl(0_0%_0%/0.4)] transition-all duration-300 hover:border-treasure-gold/50 hover:shadow-[0_0_30px_hsl(45_100%_50%/0.2)];
+  }
+
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-[hsl(45_100%_40%)] via-[hsl(45_100%_55%)] to-[hsl(50_100%_70%)] bg-clip-text text-transparent;
+  }
+
+  .text-gradient-ocean {
+    @apply bg-gradient-to-r from-ocean-light via-secondary to-[hsl(200_80%_60%)] bg-clip-text text-transparent;
+  }
+
+  .nav-link {
+    @apply relative text-foreground/80 hover:text-treasure-gold transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-treasure-gold after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  .section-divider {
+    @apply w-24 h-1 bg-gradient-to-r from-transparent via-treasure-gold to-transparent mx-auto;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+  }
+
+  .animate-wave {
+    animation: wave 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  @keyframes wave {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(45 100% 50% / 0.3); }
+    50% { box-shadow: 0 0 40px hsl(45 100% 50% / 0.6); }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+}
